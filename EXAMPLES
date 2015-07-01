@@ -1,0 +1,18 @@
+#!/usr/bin/env python2
+
+# Imports
+from NaServer import NaServer  # You can get the NaServer module from the NetApp python SDK
+from NaDict import encode, decode
+
+
+# Assuming you have the NetApp python SDK and have created a connection to the API called 'session'
+
+session = NaServer('filer.example.com', 'username', 'password')
+
+# Invoke an API command that returns NaElement objects to decode
+volinfo = session.invoke('volume-list-info')
+print volinfo.sprintf()  # Shows that the value returned is actually an NaElement object
+volinfo = decode(volinfo)
+print volinfo  # We have decoded the NaElement object into a dictionary
+volinfo = encode(volinfo)
+print volinfo.sprintf()  # We have now converted the dictionary back to an NaElement object
