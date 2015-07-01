@@ -19,6 +19,8 @@ an encode function for turning a dictionary back into the nested NaElement objec
 __version__ = '1.1'
 
 import re
+
+# The following module is part of the NetApp python SDK.  You will need to download the SDK from NetApp
 from NaElement import NaElement
 
 
