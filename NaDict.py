@@ -16,12 +16,16 @@ an encode function for turning a dictionary back into the nested NaElement objec
 #
 #     You should have received a copy of the GNU Lesser General Public License
 #     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-__version__ = '1.1'
-
+from __future__ import print_function
 import re
-
 # The following module is part of the NetApp python SDK.  You will need to download the SDK from NetApp
-from NaElement import NaElement
+try:
+    from NaElement import NaElement
+except:
+    raise Exception('Unable to find NetApp SDK Modules in your PYTHONPATH')
+
+__author__ = 'Jesse Almanrode (jesse@almanrode.com'
+__version__ = '1.2'
 
 
 class NaDictError(Exception):

@@ -16,9 +16,9 @@ The most straightforward way to get the nadict module working for you is:
 
  1. Download the [NetApps's Python SDK](https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=60427)
  2. Copy the **NaDict.py** file into the directory containing the following scripts:
-  * NaElement.py
-  * NaServer.py
-  * Ontap.py
+  - NaElement.py
+  - NaServer.py
+  - Ontap.py
  3. You should then be able to import the *encode* and *decode* functions without any issue
 
 ## Contributing
