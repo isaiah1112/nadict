@@ -1,9 +1,7 @@
-# [NaDict][]
-
 ## Overview
 
 [NaDict][] is a wrapper for [NetApps's Python SDK](https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=60427).
-It simplifies the decoding and encoding of NaElement objects, which the NetApp API uses to pass data back and forth
+It simplifies the decoding and encoding of NaElement objects, which the NetApp API uses to pass data back and forth.
 
 ## License
 
@@ -29,7 +27,7 @@ Report any issues or feature requests on the [BitBucket bug
 tracker](https://bitbucket.org/isaiah1112/nadict/issues?status=new&status=open). Please include a minimal
 (not-) working example which reproduces the bug and, if appropriate, the
  traceback information.  Please do not request features already being worked
-towards (see the TODO file).
+towards.
 
 Code contributions are encouraged: please feel free to [fork the
 project](https://bitbucket.org/isaiah1112/nadict/fork) and submit pull requests.
@@ -37,7 +35,6 @@ project](https://bitbucket.org/isaiah1112/nadict/fork) and submit pull requests.
 ## More information
 
 - [NetApp Storage](http://www.netapp.com/)
-
 
 [GNU Lesser General Public License v3.0]: http://choosealicense.com/licenses/lgpl-3.0/ "LGPL v3"
 
