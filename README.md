@@ -19,7 +19,7 @@ The most straightforward way to get the nadict module working for you is:
   - NaElement.py
   - NaServer.py
   - Ontap.py
- 3. You should then be able to import the *encode* and *decode* functions without any issue
+ 3. You should then be able to import the *encode* and *decode* functions from the **NaDict** module without any issue
 
 ## Contributing
 

@@ -2,12 +2,12 @@
 """A Python helper for doing various NetApp API operations.
 """
 from __future__ import print_function, division
-# The following module is part of the NetApp python SDK.  You will need to download the SDK from NetApp
 try:
     from NaServer import NaServer
     from NaElement import NaElement
-except:
-    raise Exception('Unable to find NetApp SDK Modules in your PYTHONPATH')
+except ImportError:
+    # You need to download the SDK from NetApp
+    raise ImportError('Unable to find NetApp SDK Modules in your PYTHONPATH')
 
 __author__ = 'Jesse Almanrode (jesse@almanrode.com)'
 __version__ = '1.2'
@@ -20,17 +20,15 @@ class OntapApiException(Exception):
 
 
 def netapp_cli(apiobj, cmd):
-    """Passes a command to the filer cli
+    """Passes a command to the filer cli via the API
 
     ..warning::
 
         ONLY USE THIS IF A COMMAND ISN'T SUPPORTED VIA THE API
 
-    - **parameters** and **return types**::
-
-        :param apiobj: API object (from netapp_api)
-        :param cmd: The command to execute
-        :return: NaElement object
+    :param apiobj: API object (from netapp_api)
+    :param cmd: The command to execute
+    :return: NaElement object
     """
     # Pulled from
     # http://community.netapp.com/t5/Software-Development-Kit-SDK-and-API-Discussions/Is-there-an-ONTAP-SDK-interface-to-change-a-qtree-s-security-style/td-p/51251
@@ -71,10 +69,8 @@ def netapp_api(filer, username, password, version='1.3'):
 def sprintf(element):
     """Shortcut to 'print element.sprintf()'
 
-    - **parameters** and **return types**::
-
-        :param element: The NaObject, NaElement to print
-        :return: None
+    :param element: The NaObject, NaElement to print
+    :return: None
     """
     print(element.sprintf())
 
@@ -82,10 +78,8 @@ def sprintf(element):
 def convert_bytes(intbytes):
     """Convert bytes to a human readable format (for creating volumes via the API)
 
-    - **parameters** and **return types**::
-
-        :param intbytes: Positive Integer
-        :return: String
+    :param intbytes: Positive Integer
+    :return: String
     """
     intbytes = int(intbytes)
     if intbytes < 0:
