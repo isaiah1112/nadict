@@ -93,7 +93,7 @@ def __encode_child__(nadict, parent):
     :param parent: Parent NaElement object to add children/values to
     :return: Finished NaElement object
     """
-    for key, value in nadict.iteritems():
+    for key, value in nadict.items():
         if type(value) is dict:
             newchild = NaElement(key)
             newchild = __encode_child__(value, newchild)
@@ -120,7 +120,7 @@ def __update__(target, source):
     :param source: NaDict dictionary
     :return: Updated NaDict dictionary
     """
-    for key2, value2 in source.iteritems():
+    for key2, value2 in source.items():
         if key2 in target.keys():
             if type(target[key2]) is list:
                 target[key2].append(value2)
