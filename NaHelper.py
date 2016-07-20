@@ -1,5 +1,5 @@
 # coding=utf-8
-"""A Python helper for doing various NetApp API operations.
+"""A Python helper module for doing various NetApp API operations in a pythonic manner.
 """
 from __future__ import print_function, division
 try:
@@ -46,7 +46,7 @@ def netapp_cli(apiobj, cmd):
 def netapp_api(filer, username, password, version='1.3'):
     """Connect to a filer API object
 
-    :param filer: FQDN of the filer you wish to connect to
+    :param filer: FQDN/IP of the filer you wish to connect to
     :param username: Username to connect with
     :param password: Password to connect with
     :param version: Version string to use for the API
@@ -66,7 +66,11 @@ def netapp_api(filer, username, password, version='1.3'):
 
 
 def sprintf(element):
-    """Shortcut to 'print element.sprintf()'
+    """Shortcut to
+
+    .. code:: Python
+
+        print(element.sprintf())
 
     :param element: The NaObject, NaElement to print
     :return: None
