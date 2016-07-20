@@ -49,7 +49,7 @@ def netapp_api(filer, username, password, version='1.3'):
     :param filer: FQDN of the filer you wish to connect to
     :param username: Username to connect with
     :param password: Password to connect with
-    :param version: Version string to use for the API (default = 1.3)
+    :param version: Version string to use for the API
     :return: NaServer Object
     :raises: OntapApiException
     """
