@@ -2,18 +2,18 @@
 # coding=utf-8
 
 # Imports
-from NaHelper import netapp_api
+from NaHelper import netapp_api, sprintf
 from NaDict import encode, decode
 
 
 # Assuming you have the NetApp python SDK and have created a connection to the API called 'session'
 
-session = netapp_api('filer.example.com', 'username', 'password')
+session = netapp_api('filer.example.com', 'jdoe', 'password1234')
 
 # Invoke an API command that returns NaElement objects to decode
 volinfo = session.invoke('volume-list-info')
-print volinfo.sprintf()  # Shows that the value returned is actually an NaElement object
+sprintf(volinfo)  # Shows that the value returned is actually an NaElement object
 volinfo = decode(volinfo)
-print volinfo  # We have decoded the NaElement object into a dictionary
+sprintf(volinfo)  # We have decoded the NaElement object into a dictionary
 volinfo = encode(volinfo)
-print volinfo.sprintf()  # We have now converted the dictionary back to an NaElement object
+sprintf(volinfo)  # We have now converted the dictionary back to an NaElement object

@@ -22,9 +22,9 @@ class OntapApiException(Exception):
 def netapp_cli(apiobj, cmd):
     """Passes a command to the filer cli via the API
 
-    ..warning::
+    .. warning::
 
-        ONLY USE THIS IF A COMMAND ISN'T SUPPORTED VIA THE API
+        Only use this method if a command isn't supported by the API.
 
     :param apiobj: API object (from netapp_api)
     :param cmd: The command to execute
@@ -46,13 +46,12 @@ def netapp_cli(apiobj, cmd):
 def netapp_api(filer, username, password, version='1.3'):
     """Connect to a filer API object
 
-    - **parameters** and **return types**::
-
-        :param filer: FQDN of the filer you wish to connect to
-        :param username: Username to connect with
-        :param password: Password to connect with
-        :param version: Version string to use for the API (default = 1.3)
-        :return: NaServer Object
+    :param filer: FQDN of the filer you wish to connect to
+    :param username: Username to connect with
+    :param password: Password to connect with
+    :param version: Version string to use for the API (default = 1.3)
+    :return: NaServer Object
+    :raises: OntapApiException
     """
     major, minor = version.split('.')
     session = NaServer(filer, major, minor)
@@ -80,6 +79,7 @@ def convert_bytes(intbytes):
 
     :param intbytes: Positive Integer
     :return: String
+    :raises: ValueError
     """
     intbytes = int(intbytes)
     if intbytes < 0:

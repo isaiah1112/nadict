@@ -9,6 +9,12 @@ NaDict
 .. automodule:: NaDict
     :members: encode, decode
 
+NaHelper
+========
+
+.. automodule:: NaHelper
+    :members: netapp_cli, netapp_api, sprintf, convert_bytes
+
 
 Links
 -----

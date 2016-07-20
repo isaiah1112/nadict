@@ -40,14 +40,15 @@ def decode(naobject):
 
     :param naobject: NaObject or NaElement
     :return: Dictionary
+    :raises: NaDictError
     """
-    nadict = {}
+    nadict = dict()
     name = naobject.element['name']
-    nadict[name] = {}
+    nadict[name] = dict()
     keys = naobject.element['attrkeys']
     vals = naobject.element['attrvals']
     j = 0
-    nadict[name] = {}
+    nadict[name] = dict()
     for i in keys:
         nadict[name][i] = str(vals[j])
         j += 1
@@ -73,6 +74,7 @@ def encode(nadict):
 
     :param nadict: Dictionary to encode
     :return: NaElement or NaObject
+    :raises: NaDictError
     """
     if type(nadict) is not dict:
         raise NaDictError("NaDict is not a dictionary")
