@@ -14,13 +14,13 @@ __version__ = '1.2'
 
 
 class OntapApiException(Exception):
-    """An Error occurred while using the NetApp API
+    """ An Error occurred while using the NetApp API
     """
     pass
 
 
 def netapp_cli(apiobj, cmd):
-    """Passes a command to the filer cli via the API
+    """ Passes a command to the filer cli via the API
 
     .. warning::
 
@@ -44,7 +44,7 @@ def netapp_cli(apiobj, cmd):
 
 
 def netapp_api(filer, username, password, version='1.3'):
-    """Connect to a filer API object
+    """ Connect to a NetApp Filer API
 
     :param filer: FQDN/IP of the filer you wish to connect to
     :param username: Username to connect with
@@ -66,7 +66,7 @@ def netapp_api(filer, username, password, version='1.3'):
 
 
 def sprintf(element):
-    """Shortcut to
+    """ Shortcut to
 
     .. code:: Python
 
@@ -79,7 +79,7 @@ def sprintf(element):
 
 
 def convert_bytes(intbytes):
-    """Convert bytes to a human readable format (for creating volumes via the API)
+    """ Convert bytes to a human readable format (for creating volumes via the API)
 
     :param intbytes: Positive Integer
     :return: String
