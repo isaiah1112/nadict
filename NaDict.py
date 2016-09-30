@@ -30,13 +30,13 @@ __version__ = '1.2'
 
 
 class NaDictError(Exception):
-    """Exception occurred during encode or decode
+    """ Exception occurred during encode or decode
     """
     pass
 
 
 def decode(naobject):
-    """Allows you to convert an NaObject into a dictionary
+    """ Convert an NaObject into a dictionary
 
     :param naobject: NaObject or NaElement
     :return: Dictionary
@@ -70,7 +70,7 @@ def decode(naobject):
 
 
 def encode(nadict):
-    """Allows you to encode a dictionary into an NaElement or NaObject
+    """ Encode a dictionary into an NaElement or NaObject
 
     :param nadict: Dictionary to encode
     :return: NaElement or NaObject
@@ -89,7 +89,7 @@ def encode(nadict):
 
 
 def __encode_child__(nadict, parent):
-    """Private Function for parsing NaDict objects back to NaElement objects
+    """ Private Function for parsing NaDict objects back to NaElement objects
 
     :param nadict: Dictionary to be turned into an NaElement object
     :param parent: Parent NaElement object to add children/values to
@@ -116,7 +116,7 @@ def __encode_child__(nadict, parent):
 
 
 def __update__(target, source):
-    """Private function to take two NaDict objects and apply the changes from dict2 to dict1 (without overwriting values)
+    """ Private function to take two NaDict objects and apply the changes from dict2 to dict1 (without overwriting values)
 
     :param target: NaDict dictionary
     :param source: NaDict dictionary
