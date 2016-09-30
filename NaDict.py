@@ -1,7 +1,8 @@
 # coding=utf-8
 """A Python helper module that works along with the NetApp python SDK.  The module includes functions
 for decoding NaElement objects into dictionaries (using similar parsing to the sprintf function).  It also includes
-an encode function for turning a dictionary back into the nested NaElement objects."""
+an encode function for turning a dictionary back into the nested NaElement objects.
+"""
 # Copyright (C) 2015 Jesse Almanrode
 #
 #     This program is free software: you can redistribute it and/or modify
@@ -16,64 +17,69 @@ an encode function for turning a dictionary back into the nested NaElement objec
 #
 #     You should have received a copy of the GNU Lesser General Public License
 #     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-__version__ = '1.1'
-
+from __future__ import print_function
 import re
+try:
+    from NaElement import NaElement
+except ImportError:
+    # You need to download the SDK from NetApp
+    raise ImportError('Unable to find NetApp SDK Modules in your PYTHONPATH')
 
-# The following module is part of the NetApp python SDK.  You will need to download the SDK from NetApp
-from NaElement import NaElement
+__author__ = 'Jesse Almanrode (jesse@almanrode.com'
+__version__ = '1.2'
 
 
 class NaDictError(Exception):
-    """
-    Exception occurred during encode or decode
+    """ Exception occurred during encode or decode
     """
     pass
 
 
 def decode(naobject):
-        """
-        Allows you to convert an NaObject into a dictionary
-        :param naobject: NaObject or Element
-        :return: Dictionary
-        """
-        nadict = {}
-        name = naobject.element['name']
-        nadict[name] = {}
-        keys = naobject.element['attrkeys']
-        vals = naobject.element['attrvals']
-        j = 0
-        nadict[name] = {}
-        for i in keys:
-            nadict[name][i] = str(vals[j])
-            j += 1
-        children = naobject.element['children']
+    """ Convert an NaObject into a dictionary
 
-        for i in children:
-            c = i
-            if not re.search('NaElement.NaElement', str(c.__class__), re.I):
-                raise NaDictError("Unexpected reference found, expected NaElement.NaElement not "
-                                  + str(c.__class__) + "\n")
-            cdict = decode(c)
-            nadict[name] = __update__(nadict[name], cdict)
+    :param naobject: NaObject or NaElement
+    :return: Dictionary
+    :raises: NaDictError
+    """
+    nadict = dict()
+    name = naobject.element['name']
+    nadict[name] = dict()
+    keys = naobject.element['attrkeys']
+    vals = naobject.element['attrvals']
+    j = 0
+    nadict[name] = dict()
+    for i in keys:
+        nadict[name][i] = str(vals[j])
+        j += 1
+    children = naobject.element['children']
 
-        naobject.element['content'] = naobject.escapeHTML(naobject.element['content'])
-        content = str(naobject.element['content'])
-        if content != '':
-            nadict[name] = content
-        return nadict
+    for i in children:
+        c = i
+        if not re.search('NaElement.NaElement', str(c.__class__), re.I):
+            err = "Unexpected reference found, expected NaElement.NaElement not " + str(c.__class__) + "\n"
+            raise NaDictError(err)
+        cdict = decode(c)
+        nadict[name] = __update__(nadict[name], cdict)
+
+    naobject.element['content'] = naobject.escapeHTML(naobject.element['content'])
+    content = str(naobject.element['content'])
+    if content != '':
+        nadict[name] = content
+    return nadict
 
 
 def encode(nadict):
-    """
-    Allows you to encode a dictionary into an NaElement or NaObject
+    """ Encode a dictionary into an NaElement or NaObject
+
     :param nadict: Dictionary to encode
     :return: NaElement or NaObject
+    :raises: NaDictError
     """
     if type(nadict) is not dict:
-        raise NaDictError("NaDict is required to be a dictionary")
+        raise NaDictError("NaDict is not a dictionary")
     if len(nadict.keys()) > 1:
-        raise NaDictError("NaDict should have a single top level key")
+        raise NaDictError("NaDict does not have a single top-level key")
     try:
         topkey = nadict.keys()[0]
     except IndexError:
@@ -83,13 +89,13 @@ def encode(nadict):
 
 
 def __encode_child__(nadict, parent):
-    """
-    Private Function for parsing NaDict objects back to NaElement objects
+    """ Private Function for parsing NaDict objects back to NaElement objects
+
     :param nadict: Dictionary to be turned into an NaElement object
     :param parent: Parent NaElement object to add children/values to
     :return: Finished NaElement object
     """
-    for key, value in nadict.iteritems():
+    for key, value in nadict.items():
         if type(value) is dict:
             newchild = NaElement(key)
             newchild = __encode_child__(value, newchild)
@@ -110,13 +116,13 @@ def __encode_child__(nadict, parent):
 
 
 def __update__(target, source):
-    """
-    Private function to take two NaDict objects and apply the changes from dict2 to dict1 (without overwriting values)
+    """ Private function to take two NaDict objects and apply the changes from dict2 to dict1 (without overwriting values)
+
     :param target: NaDict dictionary
     :param source: NaDict dictionary
     :return: Updated NaDict dictionary
     """
-    for key2, value2 in source.iteritems():
+    for key2, value2 in source.items():
         if key2 in target.keys():
             if type(target[key2]) is list:
                 target[key2].append(value2)
