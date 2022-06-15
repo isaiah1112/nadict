@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding=utf-8
-
+from __future__ import print_function
 # Imports
 from NaHelper import netapp_api, sprintf
 from NaDict import encode, decode
@@ -14,6 +14,6 @@ session = netapp_api('filer.example.com', 'jdoe', 'password1234')
 volinfo = session.invoke('volume-list-info')
 sprintf(volinfo)  # Shows that the value returned is actually an NaElement object
 volinfo = decode(volinfo)
-sprintf(volinfo)  # We have decoded the NaElement object into a dictionary
+print(volinfo)  # We have decoded the NaElement object into a dictionary
 volinfo = encode(volinfo)
 sprintf(volinfo)  # We have now converted the dictionary back to an NaElement object
