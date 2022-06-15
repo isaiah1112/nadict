@@ -1,21 +1,16 @@
-.. NaDict documentation master file, created by
-   sphinx-quickstart on Thu Nov  5 15:18:27 2015.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 .. _home:
 
 NaDict and NaHelper
 ===================
 
-NaDict and NaHelper are Python Modules designed to help make working with the `NetApp`_ APIs easier and more "Pythonic" 
+NaDict and NaHelper are Python Modules designed to help make working with the `NetApp`_ APIs easier and more "Pythonic"
 in nature.
 
 Getting Started
 ---------------
 
-Getting started with NaDict and NaHelper requires a bit of pre work.  First, you must download the `NetApp Python SDK`_ 
-from NetApp's Website.  Once you have downloaded the SDK and have the folder somewhere where you can access it from 
+Getting started with NaDict and NaHelper requires a bit of pre work.  First, you must download the `NetApp Python SDK`_
+from NetApp's Website.  Once you have downloaded the SDK and have the folder somewhere where you can access it from
 Python's PATH, you can add the NaDict and NaHelper scripts to that directory.
 
 For example:
@@ -28,7 +23,7 @@ For example:
     # Then, we add NaDict and NaHelper to that directory:
     cp ~/Downloads/NaDict.py ~/my-netapp/NetAppSDK/
     cp ~/Downloads/NaHelper.py ~/my-netapp/NetAppSDK/
-    
+
 Now we are ready to add that directory to our Python PATH and import the scripts!
 
 .. code-block:: python
@@ -42,8 +37,8 @@ Now we are ready to add that directory to our Python PATH and import the scripts
     # Now import stuff
     from NaDict import encode, decode
     from NaHelper import netapp_api, sprintf
-    
-Now you are ready to begin working with the NetApp API.  
+
+Now you are ready to begin working with the NetApp API.
 
 Connecting to the NetApp API
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -53,8 +48,8 @@ Do connect to the NetApp API simply use the :code:`netapp_api` method:
 .. code-block:: python
 
     napi = netapp_api('myfiler.example.com', 'jdoe', 'password1234')
-    
-    
+
+
 If you are successful at logging in and running the :code:`system-get-info` API command then you will get a NaServer ojbect
 back from the method and you will be ready to begin making calls to the API!
 
@@ -62,7 +57,7 @@ back from the method and you will be ready to begin making calls to the API!
 
     Permissions in the NetApp API are very granular and it can be a pain to get them all configured properly to allow you
     the right commands you need.  Be patient with your NetApp admin! :)
-    
+
 Encoding and Decoding NaElements
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -92,7 +87,7 @@ To learn what methods are available to NaDict and NaHelper please read the follo
 
    nadict
    nahelper
-   
+
 You can also find some examples of how these two modules can be used by looking in the *EXAMPLES* file in the NaDict git
 repo on Bitbucket.
 

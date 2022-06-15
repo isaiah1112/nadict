@@ -54,7 +54,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'NaDict'
-copyright = u'2015, Jesse Almanrode'
+copyright = u'2015-2022, Jesse Almanrode'
 author = u'Jesse Almanrode'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -164,7 +164,6 @@ html_static_path = ['_static']
 html_sidebars = {
     '**': [
         'about.html',
-        'versions.html',
         'globaltoc.html',
         'links.html',
         'searchbox.html',

@@ -1,5 +1,3 @@
-.. nahelper documentation master file, created by Jesse Almanrode
-
 NaHelper API
 ============
 
